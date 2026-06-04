@@ -1,3 +1,10 @@
 [phases.setup]
     nixPkgs = ['nodejs', 'python3']
     aptPkgs = ['build-essential', 'libudev-dev']
+
+# Each Railway service should set START_TARGET to one of:
+#   backend | frontend | orchestrator
+# Defaults to "backend" so a service with no override still starts something
+# valid instead of falling back to `node index.js`.
+[deploy]
+    startCommand = "sh -c 'pnpm run start:prod:${START_TARGET:-backend}'"
