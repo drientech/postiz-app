@@ -1,0 +1,12 @@
+# Railway config for the Postiz orchestrator (Temporal workers) service.
+# Point this Railway service's "Config-as-Code Path" at railway.orchestrator.toml.
+
+[phases.setup]
+    nixPkgs = ['nodejs', 'python3']
+    aptPkgs = ['build-essential', 'libudev-dev']
+
+[phases.build]
+    cmds = ['pnpm run build:orchestrator']
+
+[deploy]
+    startCommand = "pnpm run start:prod:orchestrator"

@@ -1,0 +1,12 @@
+# Railway config for the Postiz frontend (Next.js) service.
+# Point this Railway service's "Config-as-Code Path" at railway.frontend.toml.
+
+[phases.setup]
+    nixPkgs = ['nodejs', 'python3']
+    aptPkgs = ['build-essential', 'libudev-dev']
+
+[phases.build]
+    cmds = ['pnpm run build:frontend']
+
+[deploy]
+    startCommand = "pnpm run start:prod:frontend"
