@@ -24,7 +24,7 @@ export class OpenaiService {
     const generate = (
       await openai.images.generate({
         prompt,
-        model: 'chatgpt-image-latest',
+        model: 'gpt-image-1',
         size: isVertical ? '1024x1536' : '1024x1024',
       })
     ).data[0];
